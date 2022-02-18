@@ -1,0 +1,7 @@
+{
+  "logger": {
+    "level": "trace",
+    "requests": true,
+    "exposeInContext": true
+  }
+}

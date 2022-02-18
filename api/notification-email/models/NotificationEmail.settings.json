@@ -1,0 +1,57 @@
+{
+  "connection": "default",
+  "collectionName": "notification_email",
+  "info": {
+    "name": "NotificationEmail",
+    "description": "Notification Kind Email, Template"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "partnerId": {
+      "type": "string"
+    },
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "key": {
+      "required": true,
+      "type": "string"
+    },
+    "enable": {
+      "type": "boolean"
+    },
+    "from": {
+      "required": true,
+      "type": "string"
+    },
+    "replyTo": {
+      "required": true,
+      "type": "string"
+    },
+    "to": {
+      "required": true,
+      "type": "string"
+    },
+    "cc": {
+      "type": "string"
+    },
+    "bcc": {
+      "type": "string"
+    },
+    "subject": {
+      "required": true,
+      "type": "string"
+    },
+    "body": {
+      "required": true,
+      "type": "text"
+    },
+    "channel": {
+      "required": false,
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/notification-emails",
+      "handler": "NotificationEmail.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/notification-emails/count",
+      "handler": "NotificationEmail.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/notification-emails/:id",
+      "handler": "NotificationEmail.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/notification-emails",
+      "handler": "NotificationEmail.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/notification-emails/:id",
+      "handler": "NotificationEmail.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/notification-emails/save",
+      "handler": "NotificationEmail.save",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/notification-emails/:id",
+      "handler": "NotificationEmail.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "queue_email",
+  "globalId": "QueueEmail",
+  "info": {
+    "name": "QueueEmail",
+    "description": "Email Queue"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "notificationId": {
+      "required": true,
+      "model": "notification"
+    },
+    "partnerId": {
+      "required": true,
+      "type": "string"
+    },
+    "key": {
+      "required": true,
+      "type": "string"
+    },
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "date": {
+      "required": true,
+      "type": "datetime"
+    },
+    "cancel": {
+      "type": "boolean"
+    },
+    "sent": {
+      "type": "boolean"
+    },
+    "processing": {
+      "type": "boolean"
+    },
+    "read": {
+      "type": "boolean"
+    },
+    "from": {
+      "required": true,
+      "type": "string"
+    },
+    "replyTo": {
+      "required": true,
+      "type": "string"
+    },
+    "to": {
+      "required": true,
+      "type": "email"
+    },
+    "emails": {
+      "required": true,
+      "type": "array"
+    },
+    "cc": {
+      "type": "email"
+    },
+    "bcc": {
+      "type": "email"
+    },
+    "subject": {
+      "required": true,
+      "type": "string"
+    },
+    "body": {
+      "required": true,
+      "type": "text"
+    },
+    "data": {
+      "type": "json"
+    },
+    "attachmentData": {
+      "type": "json"
+    },
+    "history": {
+      "type": "json"
+    },
+    "channel": {
+      "required": false,
+      "type": "string"
+    },
+    "cancelReason": {
+      "required": false,
+      "type": "string"
+    },
+    "uniqueKey": {
+      "required": false,
+      "type": "string",
+      "default": null
+    }
+  }
+}
