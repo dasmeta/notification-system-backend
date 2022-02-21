@@ -1,0 +1,17 @@
+{
+  "csp": {
+    "enabled": false
+  },
+  "p3p": {
+    "enabled": false
+  },
+  "hsts": {
+    "enabled": false
+  },
+  "xframe": {
+    "enabled": false
+  },
+  "xss": {
+    "enabled": false
+  }
+}

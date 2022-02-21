@@ -1,0 +1,61 @@
+{
+  "name": "trainer-notification",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Trainer Notification Backend.",
+  "author": "Ashot Mnatsakanyan <ashot.mnatsakanyan@fouraitch.com> (https://tutorbot.io)",
+  "main": "./server.js",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.3"
+  },
+  "dependencies": {
+    "@sentry/node": "^5.27.4",
+    "@sentry/tracing": "^5.27.4",
+    "axios": "^0.20.0",
+    "html-to-text": "^5.1.1",
+    "ics": "^2.25.0",
+    "knex": "^0.21.6",
+    "lodash": "^4.17.20",
+    "mjml": "^4.7.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.31",
+    "nodemailer": "^6.4.13",
+    "nodemailer-mailgun-transport": "^2.0.1",
+    "qrcode": "^1.4.4",
+    "strapi": "3.4.5",
+    "strapi-admin": "3.4.5",
+    "strapi-connector-mongoose": "3.4.5",
+    "strapi-plugin-content-manager": "3.4.5",
+    "strapi-plugin-content-type-builder": "3.4.5",
+    "strapi-plugin-email": "3.4.5",
+    "strapi-plugin-upload": "3.4.5",
+    "strapi-plugin-users-permissions": "3.4.5",
+    "strapi-utils": "3.4.5"
+  },
+  "maintainers": [
+    {
+      "name": "Ashot Mnatsakanyan",
+      "email": "ashot.mnatsakanyan@fouraitch.com",
+      "url": "https://tutorbot.io"
+    }
+  ],
+  "strapi": {
+    "uuid": "80ab5bba-4bc7-47d6-a344-1924abc40a65"
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "license": "MIT"
+}

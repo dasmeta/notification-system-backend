@@ -1,0 +1,92 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/queue-emails",
+      "handler": "QueueEmail.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/queue-emails/count",
+      "handler": "QueueEmail.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/queue-emails/:id",
+      "handler": "QueueEmail.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/queue-emails",
+      "handler": "QueueEmail.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/queue-emails/:id",
+      "handler": "QueueEmail.edit",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/queue-emails/:id",
+      "handler": "QueueEmail.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/queue-emails/:id",
+      "handler": "QueueEmail.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/read/:id",
+      "handler": "QueueEmail.read",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cancel-queue-email",
+      "handler": "QueueEmail.cancelQueueEmail",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cleanup",
+      "handler": "QueueEmail.cleanup",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reprocess-queue-email",
+      "handler": "QueueEmail.reprocessQueueEmail",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

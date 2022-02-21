@@ -1,0 +1,41 @@
+{
+  "connection": "default",
+  "collectionName": "notification",
+  "info": {
+    "name": "notification",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "partnerId": {
+      "required": true,
+      "type": "string"
+    },
+    "key": {
+      "required": true,
+      "type": "string"
+    },
+    "date": {
+      "required": true,
+      "type": "datetime"
+    },
+    "data": {
+      "required": true,
+      "type": "json"
+    },
+    "attachmentData": {
+      "required": false,
+      "type": "json"
+    },
+    "uniqueKey": {
+      "required": false,
+      "type": "string"
+    },
+    "channel": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}
