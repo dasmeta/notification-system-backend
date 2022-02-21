@@ -1,0 +1,15 @@
+*
+!api
+!backup
+!config
+!extensions
+!middlewares
+!migrations
+!plugins
+!public
+
+!package.json
+!yarn.lock
+!.eslint*
+!README.md
+!favicon.ico

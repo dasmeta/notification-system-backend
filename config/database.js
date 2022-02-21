@@ -13,7 +13,8 @@ module.exports = ({ env }) => ({
         autoIndex: false,
       },
       options: {
-        authenticationDatabase: env("DATABASE_NAME"),
+        authenticationDatabase: env('AUTHENTICATION_DATABASE', null),
+        ssl: env.bool('DATABASE_SSL', false),
         autoIndex: false,
       }
     }
