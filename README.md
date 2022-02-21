@@ -33,10 +33,17 @@ $ docker build -t notification-system-backend:latest .
 ## Configuration
 - Create an environment file `.env` and defined variables
 ```text
+NODE_ENV=
+
 # Web Server
 HOST=0.0.0.0
-PORT=1337
-SERVE_ADMIN_PANEL=
+PORT=2337
+ADMIN_URL=
+API_URL=
+
+# Web Server Logging
+STRAPI_LOG_LEVEL=trace
+STRAPI_LOG_TIMESTAMP=true
 
 # Database
 DATABASE_HOST=
@@ -50,6 +57,7 @@ AUTHENTICATION_DATABASE=
 DATABASE_SSL=
 
 # JWT settings to validate token
+ADMIN_JWT_SECRET=
 JWT_SECRET=
 JWT_ALGORITHM="HS256"
 
@@ -57,10 +65,21 @@ JWT_ALGORITHM="HS256"
 AUTHENTICATION_SERVICE_API_HOST=
 AUTHENTICATION_IS_LIVE_MODE=
 
+#################################
+MAILGUN_API_KEY=
+MAILGUN_DOMAIN_SETTINGS={}
+
+SENTRY_DSN=
+FORWARD_TO=false
+IN_APP_MESSAGE_API_HEADERS={"X-API-KEY":"YOUR_API_KEY"}
+BACKEND_URL=http://0.0.0.0:1337/api/external/send-mobile-notification
+BASE_URL=http://0.0.0.0:2337
+
+
 ```
 - Create and start a container ready to handle connections
 ```shell
-$ docker run --name=ns-backend --env-file=.env -p "0.0.0.0:2337:1337" -v"$(pwd):/app" notification-system-backend:latest
+$ docker run --name=ns-backend --env-file=.env -p "0.0.0.0:2337:2337" -v"$(pwd):/usr/src/app" notification-system-backend:latest
 ```
 - The service will be accessible on http://0.0.0.0:2337
 

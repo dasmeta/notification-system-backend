@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const axios = require('axios');
 
 module.exports = async (ctx, next) => {
     let role;
@@ -9,41 +10,43 @@ module.exports = async (ctx, next) => {
     }
 
     if (ctx.request && ctx.request.header && ctx.request.header.authorization) {
-        try {
-            const { id, ...data } = await strapi.plugins['users-permissions'].services.jwt.getToken(ctx);
+      try {
+        const remoteUser = await strapi.plugins['users-permissions'].services.jwt.getToken(ctx);
 
-            /////////////// custom code for determining/filtering data by partnerId
-            if (data.partnerId && data.role !== 'admin') {
-                ctx.state.partnerId = data.partnerId;
-            }
+        const {id, guid} = remoteUser;
 
-            if (id === undefined) {
-                /////////////////////// custom code for authenticating non existing user as root/authenticated type user for legacy
-                // @TODO: get rid of this custom code by using backend API calls instead of direct frontend calls to notification server APIs
-                if (data.role) {
-                    const type = data.role === 'admin' ? 'root' : 'authenticated';
-                    role = await strapi.query('role', 'users-permissions').findOne({ type }, []);
-                } else {
-                    throw new Error('Invalid token: Token did not contain required fields');
-                }
-            }
-
-            // fetch authenticated user
-            ctx.state.user = await strapi.plugins[
-                'users-permissions'
-            ].services.user.fetchAuthenticatedUser(id);
-        } catch (err) {
-            return handleErrors(ctx, err, 'unauthorized');
+        // @todo custom code for determining/filtering data by partnerId
+        if (remoteUser.partnerId && remoteUser.role.type !== 'admin') {
+          ctx.state.partnerId = remoteUser.partnerId;
         }
+
+        if (id === undefined || guid === undefined) {
+          throw new Error('Invalid token: Token did not contain required fields');
+        }
+
+        if (remoteUser.role.type === 'root') {
+          ctx.state.user = remoteUser;
+          return await next();
+        }
+
+        // initialize ctx.state.user
+        if (strapi.config.custom.AUTHENTICATION_IS_LIVE_MODE) {
+          // fetch authenticated user from centralized service.
+          ctx.state.user = (await axios.get(strapi.config.custom.AUTHENTICATION_SERVICE_API_HOST + '/users/me', {
+            headers: {
+              'Authorization': ctx.request.header.authorization
+            }
+          })).data;
+        } {
+          ctx.state.user = remoteUser;
+        }
+        role = remoteUser.role
+      } catch (err) {
+          return handleErrors(ctx, err, 'unauthorized');
+      }
 
         if (!role && !ctx.state.user) {
             return handleErrors(ctx, 'User Not Found', 'unauthorized');
-        }
-
-        role = ctx.state.user.role;
-
-        if (role.type === 'root') {
-            return await next();
         }
 
         const store = await strapi.store({
@@ -76,7 +79,8 @@ module.exports = async (ctx, next) => {
     const route = ctx.request.route;
     const permission = await strapi.query('permission', 'users-permissions').findOne(
         {
-            role: role.id,
+            'role.type': role.type,
+            'role.name': role.name,
             type: route.plugin || 'application',
             controller: route.controller,
             action: route.action,
